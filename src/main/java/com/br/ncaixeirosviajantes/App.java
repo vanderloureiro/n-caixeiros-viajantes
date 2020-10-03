@@ -1,4 +1,4 @@
-package com.br.n-caixeiros-viajantes;
+package com.br.ncaixeirosviajantes;
 
 /**
  * Hello world!
