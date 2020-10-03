@@ -21,7 +21,7 @@ public class FileReader {
                 myReader.nextLine();
             }
             //Lida a primeira linha da quantidade de cidades
-            int identificadorCidade = 1;
+            int identificadorCidade = 0;
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 String[] coordenadas = data.split(" ");
