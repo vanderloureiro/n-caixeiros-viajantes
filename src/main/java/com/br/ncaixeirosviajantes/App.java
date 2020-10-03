@@ -1,5 +1,10 @@
 package com.br.ncaixeirosviajantes;
 
+import com.br.ncaixeirosviajantes.model.City;
+import com.br.ncaixeirosviajantes.utilities.FileReader;
+
+import java.util.ArrayList;
+
 /**
  * Hello world!
  *
