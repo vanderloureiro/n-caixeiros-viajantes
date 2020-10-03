@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class FileReader {
 
-    public ArrayList<City> readFile(String completePath){
+    public static ArrayList<City> readFile(String completePath){
         ArrayList<City> cidades = new ArrayList<>();
 
         try {
@@ -21,7 +21,7 @@ public class FileReader {
                 myReader.nextLine();
             }
             //Lida a primeira linha da quantidade de cidades
-
+            int identificadorCidade = 1;
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 String[] coordenadas = data.split(" ");
@@ -30,8 +30,9 @@ public class FileReader {
 
                 novaCidade.setX(Integer.parseInt(coordenadas[0]));
                 novaCidade.setY(Integer.parseInt(coordenadas[1]));
-
+                novaCidade.setId(identificadorCidade);
                 cidades.add(novaCidade);
+                identificadorCidade++;
             }
 
             myReader.close();

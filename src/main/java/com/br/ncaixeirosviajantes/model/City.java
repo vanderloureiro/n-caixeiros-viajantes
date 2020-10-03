@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class City {
-    private int x, y;
+    private int id, x, y;
 }
