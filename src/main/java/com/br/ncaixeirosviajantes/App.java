@@ -1,3 +1,9 @@
+package com.br.ncaixeirosviajantes;
+
+/**
+ * Hello world!
+ *
+ */
 public class App 
 {
     public static void main( String[] args )

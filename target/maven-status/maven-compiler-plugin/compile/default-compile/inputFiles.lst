@@ -1,2 +1,5 @@
-/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/src/main/java/com/br/n-caixeiros-viajantes/repository/FileRepository.java
-/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/src/main/java/com/br/n-caixeiros-viajantes/App.java
+/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/src/main/java/com/br/ncaixeirosviajantes/model/City.java
+/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/src/main/java/com/br/ncaixeirosviajantes/App.java
+/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/src/main/java/com/br/ncaixeirosviajantes/utilities/FileReader.java
+/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/src/main/java/com/br/ncaixeirosviajantes/repository/FileRepository.java
+/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/src/main/java/com/br/ncaixeirosviajantes/utilities/DistanceCalculator.java

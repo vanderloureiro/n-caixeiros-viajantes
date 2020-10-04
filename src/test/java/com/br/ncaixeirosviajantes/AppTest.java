@@ -1,4 +1,4 @@
-package com.br.n-caixeiros-viajantes;
+package com.br.ncaixeirosviajantes;
 
 import static org.junit.Assert.assertTrue;
 
