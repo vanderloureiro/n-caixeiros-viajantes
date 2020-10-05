@@ -25,4 +25,8 @@ public class TravelerService {
         return null;
     }
 
+    private List<City> getAllCitiesUnvisited() {
+        return null;
+    }
+
 }
