@@ -1,20 +1,33 @@
-package com.br.ncaixeirosviajantes.utilities;
-
-import com.br.ncaixeirosviajantes.model.City;
+package com.br.ncaixeirosviajantes.repository;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
-public class FileReader {
+import com.br.ncaixeirosviajantes.model.City;
 
-    public static ArrayList<City> readFile(String completePath){
+public class CityRepository {
+
+    private List<City> cities;
+    private String completeFilePath;
+
+    public CityRepository(String completeFilePath) {
+        this.completeFilePath = completeFilePath;
+    }
+    
+    public List<City> findAll(){
+
+        if (cities != null ){
+            return cities;
+        }
+
         ArrayList<City> cidades = new ArrayList<>();
 
         try {
-            File myObj = new File(completePath);
+            File myObj = new File(this.completeFilePath);
             Scanner myReader = new Scanner(myObj);
 
             if(myReader.hasNextLine()){
@@ -42,5 +55,19 @@ public class FileReader {
         }
 
         return cidades;
+    }
+
+    public Optional<City> findById(int id) {
+
+        if (cities == null ){
+            this.findAll();
+        }
+
+        return this.cities
+                    .stream()
+                    .filter(city -> {
+                        return city.getId() == id;
+                    })
+                    .findFirst();
     }
 }
