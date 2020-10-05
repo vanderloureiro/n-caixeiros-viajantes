@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 import com.br.ncaixeirosviajantes.model.City;
@@ -54,20 +53,10 @@ public class CityRepository {
             e.printStackTrace();
         }
 
+        this.cities = cidades;
+        
         return cidades;
     }
 
-    public Optional<City> findById(int id) {
 
-        if (cities == null ){
-            this.findAll();
-        }
-
-        return this.cities
-                    .stream()
-                    .filter(city -> {
-                        return city.getId() == id;
-                    })
-                    .findFirst();
-    }
 }
