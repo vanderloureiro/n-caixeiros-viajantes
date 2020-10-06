@@ -11,52 +11,40 @@ import com.br.ncaixeirosviajantes.services.TwoTravelerService;
 
 public class App {
     public static void main(String[] args) {
-        String path = "/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/files/ncit30.dat";
-        runOneTraveler(path);
-        runTwoTraveler(path);
-        runThreeTraveler(path);
+        int size    = 100;
+        String path = "/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/files/ncit"+size+".dat";
+        runOneTraveler(path, size);
+        runTwoTraveler(path, size);
+        runThreeTraveler(path, size);
     }
 
-    public static void runOneTraveler(String path) {
-        TravelerService travelerService = new OneTravelerService(path);
-
+    public static void runOneTraveler(String path, int size) {
+        TravelerService travelerService = new OneTravelerService(path, size);
         List<City> calculateRoute = travelerService.calculateRoute();
+        RouteResult routeResult   = travelerService.calculateValues(calculateRoute);
+        writeResult(calculateRoute, routeResult);
+    }
+
+    public static void runTwoTraveler(String path, int size) {
+        TravelerService travelerService = new TwoTravelerService(path, size);
+        List<City> calculateRoute = travelerService.calculateRoute();
+        RouteResult routeResult   = travelerService.calculateValues(calculateRoute);
+        writeResult(calculateRoute, routeResult);
+    }
+
+    public static void runThreeTraveler(String path, int size) {
+        TravelerService travelerService = new ThreeTravelerService(path, size);
+        List<City> calculateRoute = travelerService.calculateRoute();
+        RouteResult routeResult   = travelerService.calculateValues(calculateRoute);
+        writeResult(calculateRoute, routeResult);
+    }
+
+    public static void writeResult(List<City> calculateRoute, RouteResult routeResult) {
 
         calculateRoute.stream().forEach(city -> {
             System.out.println(city.toString());
         });
 
-        RouteResult routeResult = travelerService.calculateValues(calculateRoute);
-        System.out.println("====================");
-        System.out.println(routeResult.toString());
-        System.out.println("====================");
-    }
-
-    public static void runTwoTraveler(String path) {
-        TravelerService travelerService = new TwoTravelerService(path);
-
-        List<City> calculateRoute = travelerService.calculateRoute();
-
-        calculateRoute.stream().forEach(city -> {
-            System.out.println(city.toString());
-        });
-
-        RouteResult routeResult = travelerService.calculateValues(calculateRoute);
-        System.out.println("====================");
-        System.out.println(routeResult.toString());
-        System.out.println("====================");
-    }
-
-    public static void runThreeTraveler(String path) {
-        TravelerService travelerService = new ThreeTravelerService(path);
-
-        List<City> calculateRoute = travelerService.calculateRoute();
-
-        calculateRoute.stream().forEach(city -> {
-            System.out.println(city.toString());
-        });
-
-        RouteResult routeResult = travelerService.calculateValues(calculateRoute);
         System.out.println("====================");
         System.out.println(routeResult.toString());
         System.out.println("====================");

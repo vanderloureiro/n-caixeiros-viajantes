@@ -11,11 +11,13 @@ import com.br.ncaixeirosviajantes.repository.CityRepository;
 public abstract class TravelerService {
 
     protected ArrayList<City> visitedCities = new ArrayList<>();
+    protected int sizeOfData = 0;
     
     protected CityRepository repository;
     protected DistanceCalculatorService distanceCalculator;
 
-    public TravelerService(String completeFilePath) {
+    public TravelerService(String completeFilePath, int size) {
+        this.sizeOfData = size;
         this.repository = new CityRepository(completeFilePath);
         this.distanceCalculator = new DistanceCalculatorService();
     }
@@ -25,23 +27,7 @@ public abstract class TravelerService {
     }
 
     public RouteResult calculateValues(List<City> visitedCities) {
-        RouteResult routeResult = new RouteResult();
-        
-        Double distance = 0.0;
-
-        int size = visitedCities.size();
-        for (int index = 0; index < size - 1; index++) {
-            distance += this.distanceCalculator.calcualteDistance(visitedCities.get(index), visitedCities.get(index + 1));
-        }
-
-        int days = (int) (distance / 600);
-
-        routeResult.setTotalDistance(distance);
-        routeResult.setDistanceByTraveler(distance);
-        routeResult.setNumberOfDays(days);
-        routeResult.setTotalValue(days * 150);
-
-        return routeResult;
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     protected City getCurrentCity() {
