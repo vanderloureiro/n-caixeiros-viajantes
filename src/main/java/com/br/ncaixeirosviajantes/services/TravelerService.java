@@ -8,12 +8,12 @@ import com.br.ncaixeirosviajantes.model.City;
 import com.br.ncaixeirosviajantes.model.RouteResult;
 import com.br.ncaixeirosviajantes.repository.CityRepository;
 
-public class TravelerService {
+public abstract class TravelerService {
 
-    private ArrayList<City> visitedCities = new ArrayList<>();
+    protected ArrayList<City> visitedCities = new ArrayList<>();
     
-    private CityRepository repository;
-    private DistanceCalculatorService distanceCalculator;
+    protected CityRepository repository;
+    protected DistanceCalculatorService distanceCalculator;
 
     public TravelerService(String completeFilePath) {
         this.repository = new CityRepository(completeFilePath);
@@ -21,28 +21,7 @@ public class TravelerService {
     }
 
     public List<City> calculateRoute() {
-        List<City> cities = this.repository.findAll();
-
-        this.visitedCities.add(cities.get(0));
-
-        int size = cities.size();
-
-        for (int i = 0; i < size; i++) {
-
-            City currentCity = this.getCurrentCity();
-            List<City> allCitiesUnvisited = this.getAllCitiesUnvisited();
-
-            if (allCitiesUnvisited.size() > 0) {
-                City bestStepByCurrentCity = this.distanceCalculator.getBestStepByCurrentCity(
-                    currentCity, allCitiesUnvisited);
-    
-                this.visitedCities.add(bestStepByCurrentCity);
-            }
-        }
-
-        this.visitedCities.add(visitedCities.get(0));
-
-        return this.visitedCities;
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     public RouteResult calculateValues(List<City> visitedCities) {
@@ -65,11 +44,11 @@ public class TravelerService {
         return routeResult;
     }
 
-    private City getCurrentCity() {
+    protected City getCurrentCity() {
         return this.visitedCities.get(this.visitedCities.size() - 1);
     }
 
-    private List<City> getAllCitiesUnvisited() {
+    protected List<City> getAllCitiesUnvisited() {
         List<City> allCities = this.repository.findAll();
 
         return allCities
