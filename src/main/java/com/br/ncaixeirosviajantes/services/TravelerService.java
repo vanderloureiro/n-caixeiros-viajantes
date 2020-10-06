@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.br.ncaixeirosviajantes.model.City;
+import com.br.ncaixeirosviajantes.model.RouteResult;
 import com.br.ncaixeirosviajantes.repository.CityRepository;
 
 public class TravelerService {
@@ -42,6 +43,26 @@ public class TravelerService {
         this.visitedCities.add(visitedCities.get(0));
 
         return this.visitedCities;
+    }
+
+    public RouteResult calculateValues(List<City> visitedCities) {
+        RouteResult routeResult = new RouteResult();
+        
+        Double distance = 0.0;
+
+        int size = visitedCities.size();
+        for (int index = 0; index < size - 1; index++) {
+            distance += this.distanceCalculator.calcualteDistance(visitedCities.get(index), visitedCities.get(index + 1));
+        }
+
+        int days = (int) (distance / 600);
+
+        routeResult.setTotalDistance(distance);
+        routeResult.setDistanceByTraveler(distance);
+        routeResult.setNumberOfDays(days);
+        routeResult.setTotalValue(days * 150);
+
+        return routeResult;
     }
 
     private City getCurrentCity() {
