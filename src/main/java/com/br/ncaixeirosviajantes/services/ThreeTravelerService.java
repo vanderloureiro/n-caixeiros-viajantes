@@ -1,5 +1,7 @@
 package com.br.ncaixeirosviajantes.services;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,14 @@ public class ThreeTravelerService extends TravelerService {
 
         this.visitedCities.add(cities.get(0));
 
+        List<City> cities1 = new ArrayList<City>();
+        List<City> cities2 = new ArrayList<City>();
+        List<City> cities3 = new ArrayList<City>();
+        distribuirCidadesAleatoriamente(cities, cities1, cities2, cities3);
+        Collections.shuffle(cities1);
+        Collections.shuffle(cities2);
+        Collections.shuffle(cities3);
+        /*
         List<City> cities1 = cities.stream().filter(city -> {
                                 return city.getId() < (this.sizeOfData / 3);
                             })
@@ -33,6 +43,8 @@ public class ThreeTravelerService extends TravelerService {
                             })
                             .collect(Collectors.toList());
 
+        */
+
         this.calculatePartialRoute(cities1);
         this.calculatePartialRoute(cities2);
         this.calculatePartialRoute(cities3);
@@ -40,6 +52,25 @@ public class ThreeTravelerService extends TravelerService {
         this.visitedCities.add(visitedCities.get(0));
 
         return this.visitedCities;
+    }
+
+    private void distribuirCidadesAleatoriamente(List<City> cities, List<City> cities1, List<City> cities2, List<City> cities3){
+        int qtdCidades = cities.size();
+
+        for(City a : cities){
+            double numRandom = (Math.random()*qtdCidades)%3;
+            if(numRandom <= 1){
+                //if(cities1.size() < (sizeOfData / 2)){
+                cities1.add(a);
+                //}
+            }else if(numRandom > 1 && numRandom <= 2){
+                //if(cities2.size() < (sizeOfData / 2)){
+                cities2.add(a);
+                //}
+            }else{
+                cities3.add(a);
+            }
+        }
     }
 
     private void calculatePartialRoute(List<City> cities) {

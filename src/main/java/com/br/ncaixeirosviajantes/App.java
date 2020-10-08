@@ -12,7 +12,8 @@ import com.br.ncaixeirosviajantes.services.TwoTravelerService;
 public class App {
     public static void main(String[] args) {
         int size    = 100;
-        String path = "/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/files/ncit"+size+".dat";
+        //String path = "/home/vanderlei/Workspace/ufc/n-caixeiros-viajantes/files/ncit"+size+".dat";
+        String path = "C:\\Users\\Marcelo\\IdeaProjects\\n-caixeiros-viajantes\\files\\ncit"+size+".dat";
         runOneTraveler(path, size);
         runTwoTraveler(path, size);
         runThreeTraveler(path, size);
